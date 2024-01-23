@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const mongo = require('./repository/Db.js');
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+
+mongo();
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to work management application." });
